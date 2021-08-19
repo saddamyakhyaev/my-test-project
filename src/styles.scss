@@ -1,0 +1,32 @@
+@import "~jsgantt-improved/dist/jsgantt.css";
+.gstartdate {
+  display: none;
+}
+.genddate {
+  display: none;
+}.gcomp {
+   display: none;
+ }
+.gdur {
+  display: none;
+}
+.gres {
+  display: none;
+}
+
+.gmajorheading, .gminorheading, .gminorheadingwkend, .gtaskcell, .gtaskcellcurrent, .gtaskcellwkend{
+  height: 22px;
+}
+
+.gtaskheading, .gname, .gtaskname, .gres, .gdur, .gcomp, .gstartdate, .gplanstartdate, .gplanenddate, .gcost, .genddate {
+  height: 22px;
+}
+
+.gantt-inputtable {
+  border: 0;
+}
+
+
+.glistlbl{
+  width: 300px;
+}
