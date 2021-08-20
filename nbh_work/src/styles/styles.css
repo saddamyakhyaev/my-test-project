@@ -1,0 +1,268 @@
+@import "~jsgantt-improved/dist/jsgantt.css";
+.ui-datatable .ui-datatable-thead > tr > th {
+	background: #ebedef !important;
+}
+
+#av-loading {
+	height: 100px;
+	left: 30%;
+	position: absolute;
+	top: 30%;
+	width: 320px;
+}
+
+#av-loading {
+	opacity: 0
+}
+
+#av-application:empty + #av-loading {
+	opacity: 1
+}
+
+.long-text
+{
+	max-width: 150px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* Основная таблица с данными */
+.center-cell {
+	text-align: center;
+}
+
+.right-cell {
+	text-align: right;
+}
+
+.table-cell {
+	/*border: 1px solid #d4d4d4;*/
+}
+
+.table-header-cell {
+	/*border: 1px solid #d4d4d4;*/
+	/*background-color: whitesmoke;*/
+	/*font-weight: bold;*/
+	font-size: smaller;
+	text-align: center;
+}
+
+.table-footer-cell {
+	padding-left: 10px;
+	/*font-weight: normal !important;*/
+	/*font-size: smaller !important;*/
+	text-align: left !important;
+}
+
+/* заголовок таблицы в виде дерева */
+.ui-treetable th {
+	font-size: smaller;
+	text-align: center;
+	white-space: normal !important;
+	word-wrap: break-word !important;
+}
+
+.ui-treetable tbody .ui-treetable-row td {
+	border: 0.5px solid lightgray !important;
+}
+
+/* активная вкладка */
+.ui-tabview .ui-tabview-nav li.ui-tabview-selected a  {
+	background-color: #186ba0;
+	color: #ffffff;
+}
+
+.ui-tabview .ui-tabview-panel {
+	padding: 5px !important;
+}
+
+.required-field {
+	color: red;
+	font-size: large;
+
+}
+
+td{
+	word-break: break-word
+}
+
+th {
+	word-break: break-word
+}
+
+.ui-tooltip {
+	max-width: 450px !important;
+	white-space:pre-wrap !important;
+}
+
+.my-button{
+	border: transparent !important;
+	background-color: transparent !important;
+	color: 	#58A7E3 !important;
+}
+.my-button:enabled:hover{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: #1f89ce !important;
+}
+.my-button:focus{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: #1f89ce !important;
+}
+.my-button:active {
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: #1f89ce !important;
+}
+
+.my-button4{
+	border: 1px solid transparent !important;
+	background-color: transparent !important;
+	color: red !important;
+}
+.my-button4:enabled:hover{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: red !important;
+}
+.my-button4:focus{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: red !important;
+}
+.my-button4:active {
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: red !important;
+}
+
+.ui-dropdown-panel .ui-dropdown-item:not(.ui-state-highlight):hover{
+	background: lightgrey !important;
+}
+
+.ui-dropdown .ui-dropdown-label {
+	min-height: 22px !important;
+}
+
+.my-button7{
+	border: 1px solid grey !important;
+	background-color: white !important;
+	color: black !important;
+}
+.my-button7:enabled:hover{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: black !important;
+}
+.my-button7:focus{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: black !important;
+}
+.my-button7:active {
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: black !important;
+}
+
+.my-button6{
+	border: 1px solid grey !important;
+	background-color: #5cb85c !important;
+	color: white !important;
+}
+.my-button6:enabled:hover{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: black !important;
+}
+.my-button6:focus{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: black !important;
+}
+.my-button6:active {
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: black !important;
+}
+
+.my-button8{
+	border: 1px solid grey !important;
+	background-color: #1f89ce !important;
+	color: white !important;
+}
+.my-button8:enabled:hover{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: black !important;
+}
+.my-button8:focus{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: black !important;
+}
+.my-button8:active {
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: black !important;
+}
+
+
+
+.my-splitButton .ui-button{
+	border: 1px solid grey !important;
+	background-color: white !important;
+	color: black !important;
+}
+.my-splitButton .ui-splitbutton-menubutton{
+	border: 1px solid grey !important;
+	background-color: white !important;
+	color: black !important;
+}
+.my-splitButton .ui-splitbutton-menubutton:enabled:hover{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: black !important;
+}
+.my-splitButton .ui-splitbutton-menubutton:focus{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: black !important;
+}
+.my-splitButton .ui-splitbutton-menubutton:active{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: black !important;
+}
+.my-splitButton .ui-menuitem{
+	background-color: white !important;
+	color: black !important;
+}
+.my-splitButton .ui-menuitem > .ui-menuitem-link:hover{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: black !important;
+}
+.my-splitButton .ui-menuitem > .ui-menuitem-link:focus{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: black !important;
+}
+.my-splitButton .ui-menuitem > .ui-menuitem-link:active{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: black !important;
+}
+
+.my-slidemenu .ui-menuitem .ui-menuitem-link{
+	background-color: white !important;
+	color: black !important;
+}
+.my-slidemenu .ui-menuitem > .ui-menuitem-link:hover{
+	border: 1px solid grey !important;
+	background-color: #C6DBEA !important;
+	color: black !important;
+}
+

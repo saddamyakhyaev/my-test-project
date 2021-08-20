@@ -1,5 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import { GanttEditorComponent, GanttEditorOptions } from 'ng-gantt';
+import {JQueryStyleEventEmitter} from "rxjs/internal/observable/fromEvent";
+import {DOCUMENT} from "@angular/common";
+
+declare var $: any;
 
 @Component({
   selector: 'app-root',
@@ -10,32 +14,74 @@ export class AppComponent implements OnInit {
 
   public editorOptions: GanttEditorOptions;
   public data: any;
+
+
+
   //@ViewChild("editor") editor: GanttEditorComponent;
 
-  constructor() {
+  constructor(@Inject(DOCUMENT) private document: Document) {
     // this.editorOptions = new GanttEditorOptions()
     this.data = this.initialData();
+
 
 
     this.editorOptions = {
       vFormat: "day",
       vEditable: true,
-      vEventsChange: {
-        taskname: () => {
-          console.log("taskname");
-        }
+      // OnChangee
+
+
+      // EventsClickCell
+      vEvents: {
+        taskname: console.log,
+        res: console.log,
+        dur: console.log,
+        comp: console.log,
+        start: console.log,
+        end: console.log,
+        planstart: console.log,
+        planend: console.log,
+        cost: console.log,
+        additional_category: console.log, // for additional fields
+       beforeDraw: ()=>console.log('1111 before draw listener'),
+       afterDraw: ()=>this.replaceInputToTextare()
       },
+
+      vEventClickRow: console.log,
+      vEventClickCollapse: console.log,
+
 
       vAdditionalHeaders: { // Add data columns to your table
-        category: {
-          title: 'Category'
+        pTopic: {
+          title: 'Тема проверки'
         }
       },
 
-      vQuarterColWidth: 36,
-      vShowEndWeekDate: 0,
-      vFormatArr: ['День', 'Неделя', 'Месяц', 'Quarter'],
+      // vQuarterColWidth: 36,
+      // vShowEndWeekDate: 0,
+      // vFormatArr: ['День', 'Неделя', 'Месяц', 'Quarter'],
     };
+
+     //setTimeout(this.replaceInputToTextare, 7000);
+  }
+
+  replaceInputToTextare() {
+
+    var i: any;
+    var arr: HTMLCollectionOf<Element> = document.getElementsByClassName('gantt-inputtable');
+   // var arr: HTMLCollectionOf<Element> = document.getE('gantt-inputtable');
+
+    for(i in arr){
+      var element_input = arr[i];
+      if(element_input instanceof Element) {
+        console.log(element_input.getAttribute('value'));
+        const element_textarea = document.createElement('textarea');
+        element_textarea.className = 'gantt-inputtable';
+        element_textarea.setRangeText(element_input.getAttribute('value') + "");
+        element_input.replaceWith(element_textarea);
+      }
+    };
+
   }
 
 
@@ -43,7 +89,7 @@ export class AppComponent implements OnInit {
     return [
       {
         pID: 1,
-        pName: "Define Chart API",
+        pName: "Зуев Юрий Викторович",
         pStart: "",
         pEnd: "",
         pClass: "ggroupblack",
@@ -60,9 +106,10 @@ export class AppComponent implements OnInit {
       },
       {
         pID: 11,
-        pName: "Chart Object",
+        pName: "OLD Федеральное государственное бюджетное учреждение науки Институт теплофизики им. С.С. Кутателадзе Сибирского отделения Российской академии наук",
+        pTopic : "Проверка деятельности",
         pStart: "2017-02-20",
-        pEnd: "2017-02-20",
+        pEnd: "2017-07-20",
         pClass: "gmilestone",
         pLink: "",
         pMile: 1,
@@ -77,7 +124,7 @@ export class AppComponent implements OnInit {
       },
       {
         pID: 12,
-        pName: "Task Objects",
+        pName: "Соломаха  Роман Геннадиевич",
         pStart: "",
         pEnd: "",
         pClass: "ggroupblack",
@@ -86,7 +133,7 @@ export class AppComponent implements OnInit {
         pRes: "Shlomy",
         pComp: 40,
         pGroup: 1,
-        pParent: 1,
+        pParent: 0,
         pOpen: 1,
         pDepend: "",
         pCaption: "",
@@ -94,11 +141,11 @@ export class AppComponent implements OnInit {
       },
       {
         pID: 121,
-        pName: "Бонусы группового обучения: вебинары и лайвкодинги, разбор задач и вопросов с собеседований, карьерный трек",
+        pName: "OLD Федеральное государственное бюджетное учреждение науки Институт гуманитарных исследований и проблем малочисленных народов Севера Сибирского отделения Российской академии наук",
+        pTopic : "Деятельность по использованию и распоряжению федеральным имуществом",
         pStart: "2017-02-21",
         pEnd: "2017-03-09",
         pClass: "gtaskblue",
-        category : "типь типь",
         pLink: "",
         pMile: 0,
         pRes: "Brian T.",
@@ -112,7 +159,8 @@ export class AppComponent implements OnInit {
       },
       {
         pID: 122,
-        pName: "Task Variables",
+        pName: "Федеральное государственное бюджетное образовательное учреждение высшего образования \"Сибирский государственный университет науки и технологий имени академика М.Ф.Решетнева\"",
+        pTopic : "Антитеррористическая защищенность объектов (территорий)",
         pStart: "2017-03-06",
         pEnd: "2017-03-11",
         pClass: "gtaskred",
@@ -128,25 +176,9 @@ export class AppComponent implements OnInit {
         pNotes: ""
       },
       {
-        pID: 123,
-        pName: "Task by Minute/Hour",
-        pStart: "2017-03-09",
-        pEnd: "2017-03-14 12: 00",
-        pClass: "gtaskyellow",
-        pLink: "",
-        pMile: 0,
-        pRes: "Ilan",
-        pComp: 60,
-        pGroup: 0,
-        pParent: 12,
-        pOpen: 1,
-        pDepend: "",
-        pCaption: "",
-        pNotes: ""
-      },
-      {
         pID: 124,
-        pName: "Task Functions",
+        pName: "OLD Федеральное государственное бюджетное учреждение науки Институт общей и экспериментальной биологии Сибирского отделения Российской академии наук",
+        pTopic : "Финансово-бюджетная и финансово-хозяйственная деятельность",
         pStart: "2017-03-09",
         pEnd: "2017-03-29",
         pClass: "gtaskred",
@@ -162,25 +194,8 @@ export class AppComponent implements OnInit {
         pNotes: null
       },
       {
-        pID: 2,
-        pName: "Create HTML Shell",
-        pStart: "2017-03-24",
-        pEnd: "2017-03-24",
-        pClass: "gtaskyellow",
-        pLink: "",
-        pMile: 0,
-        pRes: "Brian",
-        pComp: 20,
-        pGroup: 0,
-        pParent: 0,
-        pOpen: 1,
-        pDepend: 122,
-        pCaption: "",
-        pNotes: ""
-      },
-      {
         pID: 3,
-        pName: "Code Javascript",
+        pName: "Тихонов Аркадий Анатольевич",
         pStart: "",
         pEnd: "",
         pClass: "ggroupblack",
@@ -197,7 +212,8 @@ export class AppComponent implements OnInit {
       },
       {
         pID: 31,
-        pName: "Define Variables",
+        pName: "OLD Международный союз  Содружество общественных организаций ветеранов (пенсионеров) независимых государств",
+        pTopic : "Научная деятельность",
         pStart: "2017-02-25",
         pEnd: "2017-03-17",
         pClass: "gtaskpurple",
@@ -206,7 +222,7 @@ export class AppComponent implements OnInit {
         pRes: "Brian",
         pComp: 30,
         pGroup: 0,
-        pParent: 3,
+        pParent: 12,
         pOpen: 1,
         pDepend: "",
         pCaption: "",
@@ -214,7 +230,8 @@ export class AppComponent implements OnInit {
       },
       {
         pID: 32,
-        pName: "Calculate Chart Size",
+        pName: "OLD Общероссийская общественная организация  Союз  пенсионеров России",
+        pTopic : "Качество и безопасность медицинской деятельности",
         pStart: "2017-03-15",
         pEnd: "2017-03-24",
         pClass: "gtaskgreen",
@@ -231,7 +248,8 @@ export class AppComponent implements OnInit {
       },
       {
         pID: 33,
-        pName: "Draw Task Items",
+        pName: "OLD Всероссийская общественная организация ветеранов  БОЕВОЕ БРАТСТВО  ",
+        pTopic : "Деятельность по использованию и распоряжению федеральным имуществом",
         pStart: "",
         pEnd: "",
         pClass: "ggroupblack",
@@ -248,7 +266,8 @@ export class AppComponent implements OnInit {
       },
       {
         pID: 332,
-        pName: "Task Label Table",
+        pName: "OLD Автономная некоммерческая организация \"Учебно – кинологический центр \"Собаки – помощники инвалидов\"",
+        pTopic : "Деятельность по использованию и распоряжению федеральным имуществом",
         pStart: "2017-03-06",
         pEnd: "2017-03-09",
         pClass: "gtaskblue",
@@ -265,7 +284,7 @@ export class AppComponent implements OnInit {
       },
       {
         pID: 333,
-        pName: "Task Scrolling Grid",
+        pName: "OLD Фонд поддержки гуманитарных и просветительских инициатив \"Соработничество\"",
         pStart: "2017-03-11",
         pEnd: "2017-03-20",
         pClass: "gtaskblue",
@@ -282,7 +301,7 @@ export class AppComponent implements OnInit {
       },
       {
         pID: 34,
-        pName: "Draw Task Bars",
+        pName: "Кульчихина Екатерина Владимировна",
         pStart: "",
         pEnd: "",
         pClass: "ggroupblack",
@@ -291,7 +310,7 @@ export class AppComponent implements OnInit {
         pRes: "Anybody",
         pComp: 60,
         pGroup: 1,
-        pParent: 3,
+        pParent: 0,
         pOpen: 0,
         pDepend: "",
         pCaption: "",
@@ -300,6 +319,7 @@ export class AppComponent implements OnInit {
       {
         pID: 341,
         pName: "Loop each Task",
+        pTopic : "Деятельность по использованию и распоряжению федеральным имуществом",
         pStart: "2017-03-26",
         pEnd: "2017-04-11",
         pClass: "gtaskred",
@@ -376,7 +396,7 @@ export class AppComponent implements OnInit {
         pRes: "Brian",
         pComp: 30,
         pGroup: 0,
-        pParent: 3,
+        pParent: 34,
         pOpen: 1,
         pDepend: "333",
         pCaption: "",
@@ -386,5 +406,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 }

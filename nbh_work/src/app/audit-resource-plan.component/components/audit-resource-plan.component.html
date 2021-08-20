@@ -1,0 +1,75 @@
+<div [ngBusy]="{busy: busy, message: 'Загрузка...', delay: 25}" xmlns="http://www.w3.org/1999/html"
+     xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <p-toolbar class="toolbar-small">
+        <div class="ui-toolbar-group-left">
+            <div style="display: inline-block">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon">
+                        <i class="fa fa-search"></i>
+                    </span>
+
+                </div>
+            </div >
+            <button pButton type="button" icon="fa fa-refresh" (click)= "ReloadData()" class="my-button7" label="Обновить"></button>
+            <!--<button pButton type="button" icon="fa fa-print" (click)="exportExcel()" class="my-button7" label="Печать"></button>-->
+            <button pButton type="button" icon="fa fa-plus" (click)="NewDialWindow()" class="my-button6" label="Добавить"></button>
+            <input type="text" pInputText placeholder="Поиск" style="width:auto"
+                   title="Поиск"
+                   [(ngModel)]="searchStr"
+                   (ngModelChange)="applyFilter(dataUserResource)">
+        </div>
+    </p-toolbar>
+
+    <div >
+        <p-table #dt [value]="dataUserResource"
+                 [globalFilterFields]="['post', 'imya', 'familiya', 'otchestvo', 'name', 'year']"
+                 [sortField]="'dataUserResource.name'"
+                 selectionMode="single"
+                 dataKey="id"
+
+                 scrollable="true" scrollHeight="525px" >
+
+        </p-table>
+    </div>
+
+
+    <!--<ng-template pTemplate="header" let-columns >-->
+        <!--<tr>-->
+            <!--<th class="center-cell" style="width: 25px"></th>-->
+            <!--<th class="center-cell" style="width: 40px"> Объект проверки</th>-->
+            <!--<th class="center-cell" style="width: 180px"> Тема проверки </th>-->
+
+            <!--<th class="center-cell" style="width: 75px"> ГОД </th>-->
+        <!--</tr>-->
+    <!--</ng-template>-->
+
+    <!--<ng-template pTemplate="body" let-row let-rowIndex="rowIndex" let-columns="columns">-->
+        <!--<tr [pSelectableRow]="row" (click)="selectedRow=row" (dblclick)="NewDialWindow()" >-->
+            <!--<td class="table-cell" style="width: 25px" align="center" >-->
+                <!--<p-slideMenu #menu [model]="items" [popup]="true" appendTo="body" backLabel="Назад"-->
+                             <!--viewportHeight="66" styleClass="my-slidemenu">-->
+
+                <!--</p-slideMenu>-->
+                <!--<button type="button" pButton icon="fa fa-caret-down" class="my-button7"-->
+                        <!--(click)="menu.toggle($event) ">-->
+                <!--</button>-->
+            <!--</td>-->
+
+            <!--<td class="table-cell center-cell" style="width: 40px" >-->
+                <!--{{row.code}}-->
+            <!--</td>-->
+
+            <!--<td class="table-cell center-cell" style="width: 180px">-->
+                <!--{{row.name}}-->
+            <!--</td>-->
+        <!--</tr>-->
+    <!--</ng-template>-->
+
+
+
+    <div style="height:300px;">
+    <ng-gantt [options]="editorOptions" [data]="data" #editor></ng-gantt>
+    </div>
+
+
+</div>

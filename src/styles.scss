@@ -1,32 +1,137 @@
 @import "~jsgantt-improved/dist/jsgantt.css";
-.gstartdate {
-  display: none;
-}
-.genddate {
-  display: none;
-}.gcomp {
-   display: none;
- }
-.gdur {
-  display: none;
-}
-.gres {
-  display: none;
-}
 
-.gmajorheading, .gminorheading, .gminorheadingwkend, .gtaskcell, .gtaskcellcurrent, .gtaskcellwkend{
+
+
+/*
+ Форматирования строк и ячеек
+ */
+
+.gmajorheading, .gminorheading, .gminorheadingwkend, .gtaskcell, .gtaskcellcurrent, .gtaskcellwkend,
+.gtaskheading, .gname, .gtaskname, .gres, .gdur, .gcomp, .gstartdate, .gplanstartdate, .gplanenddate, .gcost, .genddate{
   height: 22px;
 }
 
-.gtaskheading, .gname, .gtaskname, .gres, .gdur, .gcomp, .gstartdate, .gplanstartdate, .gplanenddate, .gcost, .genddate {
-  height: 22px;
+.glineitem, .gmileitem{
+  .gmajorheading, .gminorheading, .gminorheadingwkend, .gtaskcell, .gtaskcellcurrent, .gtaskcellwkend,
+  .gtaskheading, .gname, .gtaskname, .gres, .gdur, .gcomp, .gstartdate, .gplanstartdate, .gplanenddate, .gcost, .genddate{
+    height: 100px;
+  }
 }
+
+
+.gmajorheading, .gminorheading, .gminorheadingwkend,
+.gtaskcell, .gtaskcellcurrent, .gtaskcellwkend,
+.gtaskheading, .gname, .gtaskname, .gres,
+.gdur, .gcomp, .gstartdate, .gplanstartdate,
+.gplanenddate, .gcost, .genddate,
+.gadditional-pTopic,
+.gtasklist{
+  border: #d2d2d2 1px solid;
+}
+
+
+
+//.gitemhighlight{
+//  color: red !important;
+//}
+
+
+/*
+  Форматирование диаграмм
+ */
+.gtaskblue, .gtaskred, .gtaskgreen, .gtaskyellow, .gtaskpurple, .gtaskpink{
+  height: 60px;
+}
+
+.glineitem .gtaskbarcontainer {
+ top: -25px;
+}
+
+.gtaskbluecomplete, .gtaskredcomplete, .gtaskgreencomplete, .gtaskyellowcomplete, .gtaskpurplecomplete, .gtaskpinkcomplete {
+  display: none;
+}
+
+/*
+ Форматирвоание линий/стрелок
+ */
+
+.glinediv{
+  display: none;
+}
+
+/*
+  Форматирование колонок
+ */
+.glistlbl{
+  width: 100px;
+}
+.gstartdate, .genddate, .gcomp, .gres, .gdur {
+  display: none;
+}
+
+.gadditional-pTopic {
+  width: 150px;
+  max-width: 150px;
+  padding: 0 15px;
+}
+.gmainleft {
+  width: 600px;
+}
+
+.gadditional-pTopic div{
+  white-space: normal;
+  font-size: 17px;
+  font: 400 13.3333px Arial;
+}
+
+.glistlbl {
+  width: 100% !important;
+}
+
+.ggroupitem span{
+  padding-left: 10px;
+}
+
+.gtaskname div, .gtasknam{
+  font-size: 16px;
+}
+
 
 .gantt-inputtable {
   border: 0;
 }
 
-
 .glistlbl{
   width: 300px;
+}
+
+.gtaskeditable {
+  overflow: hidden !important;
+}
+
+textarea{
+  max-height: 300px !important;
+  height: 90px !important;
+  margin: 0 !important;
+  border: 0;
+  width: 99%;
+  resize: none;
+
+}
+
+.gtaskname div, .gtaskname {
+  max-width: none;
+  min-width: 0;
+  width: 300px;
+}
+
+.gtasktableh .gtaskname {
+  max-width: none;
+  min-width: 0;
+  width: 300px;
+}
+
+.glineitem .gtaskname div, .gtaskname {
+
+  margin-left: -20px;
 }
