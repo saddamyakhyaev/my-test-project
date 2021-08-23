@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
 
   public editorOptions: GanttEditorOptions;
   public data: any;
+  public lang: any;
 
 
 
@@ -23,11 +24,14 @@ export class AppComponent implements OnInit {
     // this.editorOptions = new GanttEditorOptions()
     this.data = this.initialData();
 
-
+    this.lang = {format : 'Select', feb : 'Фев', week : 'Неделя', month : 'Месяц'};
 
     this.editorOptions = {
+      vCaptionType: 'Complete',
+      vQuarterColWidth: 96,
       vFormat: "day",
-      vEditable: true,
+      vEditable: false,
+      vLang: this.lang,
       // OnChangee
 
 
@@ -43,8 +47,8 @@ export class AppComponent implements OnInit {
         planend: console.log,
         cost: console.log,
         additional_category: console.log, // for additional fields
-       beforeDraw: ()=>console.log('1111 before draw listener'),
-       afterDraw: ()=>this.replaceInputToTextare()
+        beforeDraw: ()=>console.log('1111 before draw listener'),
+       //afterDraw: ()=>this.replaceInputToTextare()
       },
 
       vEventClickRow: console.log,
@@ -59,14 +63,13 @@ export class AppComponent implements OnInit {
 
       // vQuarterColWidth: 36,
       // vShowEndWeekDate: 0,
-      // vFormatArr: ['День', 'Неделя', 'Месяц', 'Quarter'],
+      //vFormatArr: ['День', 'Неделя', 'Месяц', 'Quarter'],
     };
 
      //setTimeout(this.replaceInputToTextare, 7000);
   }
 
   replaceInputToTextare() {
-
     var i: any;
     var arr: HTMLCollectionOf<Element> = document.getElementsByClassName('gantt-inputtable');
    // var arr: HTMLCollectionOf<Element> = document.getE('gantt-inputtable');
@@ -105,16 +108,35 @@ export class AppComponent implements OnInit {
         pNotes: "Some Notes text"
       },
       {
-        pID: 11,
+        pID: 18,
         pName: "OLD Федеральное государственное бюджетное учреждение науки Институт теплофизики им. С.С. Кутателадзе Сибирского отделения Российской академии наук",
         pTopic : "Проверка деятельности",
         pStart: "2017-02-20",
         pEnd: "2017-07-20",
-        pClass: "gmilestone",
+        pClass: "gtaskblue",
         pLink: "",
-        pMile: 1,
-        pRes: "Shlomy",
-        pComp: 100,
+        pMile: 0,
+        pRes: "Brian T.",
+        pComp: 22,
+        pGroup: 0,
+        pParent: 1,
+        pOpen: 1,
+        pDepend: "",
+        pCaption: "",
+        pNotes: ""
+      },
+
+      {
+        pID: 45,
+        pName: "OLD Федеральное государственное бюджетное учреждение науки Институт гуманитарных исследований и проблем малочисленных народов Севера Сибирского отделения Российской академии наук",
+        pTopic : "Деятельность по использованию и распоряжению федеральным имуществом",
+        pStart: "2017-02-20",
+        pEnd: "2017-07-20",
+        pClass: "gtaskblue",
+        pLink: "",
+        pMile: 0,
+        pRes: "Brian T.",
+        pComp: 60,
         pGroup: 0,
         pParent: 1,
         pOpen: 1,
