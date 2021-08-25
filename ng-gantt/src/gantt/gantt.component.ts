@@ -21,7 +21,8 @@ export class GanttEditorComponent implements OnInit {
 
   private _data;
 
-  @Input() options: GanttEditorOptions = new JSGantt();
+  //@Input() options: GanttEditorOptions = new JSGantt();
+  @Input() options: GanttEditorOptions;
   @Input() format = 'week';
   @Input('data')
   set data(value: Object) {
@@ -45,10 +46,9 @@ export class GanttEditorComponent implements OnInit {
     // document.getElementById('embedded-Gantt')
     const g = this.editor = new (<any>JSGantt).GanttChart(this.ganttEditorContainer.nativeElement, this.format);
 
+    this.editor.addLang('en2', {'format':'РУССКИЙ ЯЗЫК - что такое делать?', 'comp':'Complete'});
     if (g.getDivId() != null) {
-
       // JSGantt.parseJSON('./fixes/data.json', g);
-
       g.setOptions({
         vCaptionType: 'Complete',  // Set to Show Caption : None,Caption,Resource,Duration,Complete,
         vQuarterColWidth: 36,

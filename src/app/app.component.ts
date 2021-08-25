@@ -29,16 +29,60 @@ export class AppComponent implements OnInit {
 
     this.lang = {format : 'Select', feb : 'Фев', week : 'Неделя', month : 'Месяц'};
 
+    // this.editorOptions = {
+    //   vCaptionType: 'Complete',
+    //   vQuarterColWidth: 96,
+    //   vFormat: "day",
+    //   vEditable: false,
+    //   vLang: this.lang,
+    //   // OnChangee
+    //
+    //
+    //   // EventsClickCell
+    //   vEvents: {
+    //     taskname: console.log,
+    //     res: console.log,
+    //     dur: console.log,
+    //     comp: console.log,
+    //     start: console.log,
+    //     end: console.log,
+    //     planstart: console.log,
+    //     planend: console.log,
+    //     cost: console.log,
+    //     additional_category: console.log, // for additional fields
+    //     beforeDraw: ()=>console.log('1111 before draw listener'),
+    //    //afterDraw: ()=>this.replaceInputToTextare()
+    //   },
+    //
+    //   vEventClickRow: console.log,
+    //   vEventClickCollapse: console.log,
+    //
+    //
+    //   vAdditionalHeaders: { // Add data columns to your table
+    //     pTopic: {
+    //       title: 'Тема проверки'
+    //     }
+    //   },
+    //
+    //   // vQuarterColWidth: 36,
+    //   // vShowEndWeekDate: 0,
+    //   //vFormatArr: ['День', 'Неделя', 'Месяц', 'Quarter'],
+    // };
+
+
+
     this.editorOptions = {
-      vCaptionType: 'Complete',
-      vQuarterColWidth: 96,
-      vFormat: "day",
-      vEditable: false,
-      vLang: this.lang,
-      // OnChangee
-
-
-      // EventsClickCell
+      vCaptionType: 'Complete',  // Set to Show Caption : None,Caption,Resource,Duration,Complete,
+      vQuarterColWidth: 36,
+      vDateTaskDisplayFormat: 'day dd month yyyy', // Shown in tool tip box
+      vDayMajorDateDisplayFormat: 'mon yyyy - Week ww', // Set format to display dates in the "Major" header of the "Day" view
+      vWeekMinorDateDisplayFormat: 'dd mon', // Set format to display dates in the "Minor" header of the "Week" view
+      vLang: 'en2',
+      vAdditionalHeaders: { // Add data columns to your table
+          pTopic: {
+            title: 'Тема проверки'
+          }
+        },
       vEvents: {
         taskname: console.log,
         res: console.log,
@@ -48,26 +92,22 @@ export class AppComponent implements OnInit {
         end: console.log,
         planstart: console.log,
         planend: console.log,
-        cost: console.log,
-        additional_category: console.log, // for additional fields
-        beforeDraw: ()=>console.log('1111 before draw listener'),
-       //afterDraw: ()=>this.replaceInputToTextare()
+        cost: console.log
       },
-
+      vEventsChange: {
+      },
+      vResources: [
+        { id: 0, name: 'Anybody' },
+        { id: 1, name: 'Mario' },
+        { id: 2, name: 'Henrique' },
+        { id: 3, name: 'Pedro' }
+      ],
       vEventClickRow: console.log,
-      vEventClickCollapse: console.log,
-
-
-      vAdditionalHeaders: { // Add data columns to your table
-        pTopic: {
-          title: 'Тема проверки'
-        }
-      },
-
-      // vQuarterColWidth: 36,
-      // vShowEndWeekDate: 0,
-      //vFormatArr: ['День', 'Неделя', 'Месяц', 'Quarter'],
+      vFormatArr: ['Day', 'Week', 'Month', 'Quarter'],
+      vFormat: 'day'
     };
+
+   // this.editor.setOptions(this.editorOptions);
 
      //setTimeout(this.replaceInputToTextare, 7000);
   }
@@ -88,14 +128,34 @@ export class AppComponent implements OnInit {
       }
     };
 
+
+
   }
 
   changeData() {
     this.data = [... this.data,
-      { pID: Math.random() * 100,
+      {
+        pID: 765,
+        pName: "OLD Федеральное государственное бюджетное учреждение науки Институт теплофизики им. С.С. Кутателадзе Сибирского отделения Российской академии наук",
+        pTopic : "Проверка деятельности",
+        pStart: "2017-02-20",
+        pEnd: "2017-07-20",
+        pClass: "gtaskblue",
+        pLink: "",
+        pMile: 0,
+        pRes: "Brian T.",
+        pComp: 22,
+        pGroup: 0,
+        pParent: 1,
+        pOpen: 1,
+        pDepend: "",
+        pCaption: "",
+        pNotes: ""
+      }];
 
-        pName: "new item", }];
+    this.editor.setOptions(this.editorOptions);
   }
+
 
 
   initialData() {
