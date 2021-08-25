@@ -1,7 +1,9 @@
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
-import { GanttEditorComponent, GanttEditorOptions } from 'ng-gantt';
+
 import {JQueryStyleEventEmitter} from "rxjs/internal/observable/fromEvent";
 import {DOCUMENT} from "@angular/common";
+import {GanttEditorOptions} from "ng-gantt/src/gantt/gantt.editoroptions";
+import {GanttEditorComponent} from "ng-gantt/src/gantt/gantt.component";
 
 declare var $: any;
 
@@ -17,6 +19,7 @@ export class AppComponent implements OnInit {
   public lang: any;
 
 
+  @ViewChild('editor', { static: true }) editor: GanttEditorComponent;
 
   //@ViewChild("editor") editor: GanttEditorComponent;
 
@@ -85,6 +88,13 @@ export class AppComponent implements OnInit {
       }
     };
 
+  }
+
+  changeData() {
+    this.data = [... this.data,
+      { pID: Math.random() * 100,
+
+        pName: "new item", }];
   }
 
 

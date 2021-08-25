@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgGanttEditorModule } from 'ng-gantt'
 
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NgGanttEditorModule} from "ng-gantt/src/lib.module";
 
 
 @NgModule({
@@ -16,6 +16,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     ReactiveFormsModule,
     BrowserModule,
     NgGanttEditorModule
+
   ],
   providers: [{ provide: 'Window', useValue: window }],
   bootstrap: [AppComponent]
