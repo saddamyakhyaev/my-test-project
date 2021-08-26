@@ -3,8 +3,9 @@ import {
 } from '@angular/core';
 //import { JSGantt } from 'jsgantt-improved';
 import * as JSGantt from 'jsgantt-improved';
-
 import { GanttEditorOptions } from './gantt.editoroptions';
+
+import ruLang from '../data/ru.lang.json';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -46,7 +47,8 @@ export class GanttEditorComponent implements OnInit {
     // document.getElementById('embedded-Gantt')
     const g = this.editor = new (<any>JSGantt).GanttChart(this.ganttEditorContainer.nativeElement, this.format);
 
-    this.editor.addLang('en2', {'format':'РУССКИЙ ЯЗЫК - что такое делать?', 'comp':'Complete'});
+    this.loadLang();
+
     if (g.getDivId() != null) {
       // JSGantt.parseJSON('./fixes/data.json', g);
       g.setOptions({
@@ -70,6 +72,12 @@ export class GanttEditorComponent implements OnInit {
       }
       g.Draw();
     }
+  }
+
+  loadLang(){
+   // var data = require('../data/ru.lang.json');
+    this.editor.addLang('ru', ruLang);
+    //console.log("Json data : ", JSON.stringify(data));
   }
 
   // public get(): JSON {
