@@ -47,6 +47,9 @@ export class GanttEditorComponent implements OnInit {
     // document.getElementById('embedded-Gantt')
     const g = this.editor = new (<any>JSGantt).GanttChart(this.ganttEditorContainer.nativeElement, this.format);
 
+    this.editor.setDateInputFormat("yyyy-mm-dd");
+    this.editor.setScrollTo("2020-02-02");
+
     this.loadLang();
 
     if (g.getDivId() != null) {
@@ -60,6 +63,7 @@ export class GanttEditorComponent implements OnInit {
         vShowTaskInfoLink: 1, // Show link in tool tip (0/1)
         vShowEndWeekDate: 0,  // Show/Hide the date for the last day of the week in header for
         vUseSingleCell: 10000,
+        vScrollTo: new Date(2020, 0, 1, 0, 0, 0, 0),
         // Even with setUseSingleCell using Hour format on such a large chart can cause issues in some browsers
         vFormatArr: this.formats.slice(1),
         ...optionsBefore
@@ -76,7 +80,8 @@ export class GanttEditorComponent implements OnInit {
 
   loadLang(){
    // var data = require('../data/ru.lang.json');
-    this.editor.addLang('ru', ruLang);
+    //this.editor.addLang('ru', ruLang);
+
     //console.log("Json data : ", JSON.stringify(data));
   }
 
@@ -90,6 +95,8 @@ export class GanttEditorComponent implements OnInit {
     }
     this.optionsChanged = true;
     this.options = newOptions;
+
+
     this.ngOnInit();
   }
 

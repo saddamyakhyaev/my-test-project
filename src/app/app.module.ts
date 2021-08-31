@@ -3,7 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {NgGanttEditorModule} from "ng-gantt/src/lib.module";
+import {DatailDataService} from "./DatailDataService";
+import {SearchService} from "./searchService";
+import {NgGanttEditorModule} from "ng-gantt";
 
 
 @NgModule({
@@ -18,7 +20,7 @@ import {NgGanttEditorModule} from "ng-gantt/src/lib.module";
     NgGanttEditorModule
 
   ],
-  providers: [{ provide: 'Window', useValue: window }],
+  providers: [{ provide: 'Window', useValue: window }, DatailDataService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
